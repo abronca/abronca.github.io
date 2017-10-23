@@ -58,42 +58,32 @@ about =
             [ question [ text "What do you do?" ]
             , answer
                 [ text "I write code in NYC. I'm proficient in "
-                , span [ class "constant" ] [ text "JavaScript" ]
+                , constant "JavaScript"
                 , text ", "
-                , span [ class "constant" ] [ text "Ruby" ]
+                , constant "Ruby"
                 , text ", and "
-                , span [ class "constant" ] [ text "SQL" ]
+                , constant "SQL"
                 , text ". I'm also comfortable with "
-                , span [ class "constant" ] [ text "Rails" ]
+                , constant "Rails"
                 , text ", "
-                , span [ class "constant" ] [ text "React" ]
+                , constant "React"
                 , text ", and "
-                , span [ class "constant" ] [ text "Redux" ]
+                , constant "Redux"
                 , text ". I currently teach at App Academy NYC."
                 ]
             , question [ text "Do you have any hobbies?" ]
             , answer
                 [ text "Some of my favorite video games are "
-                , span [ class "constant" ] [ text "EarthBound" ]
+                , constant "EarthBound"
                 , text ", "
-                , span [ class "constant" ] [ text "Fez" ]
+                , constant "Fez"
                 , text ", and "
-                , span [ class "constant" ] [ text "Portal" ]
+                , constant "Portal"
                 , text ". I also play guitar and occasionally write music."
                 ]
             ]
         , nav [ class "menu" ] [ homeArrow ]
         ]
-
-
-question : List (Html Msg) -> Html Msg
-question children =
-    p [ class "question" ] children
-
-
-answer : List (Html Msg) -> Html Msg
-answer children =
-    p [ class "answer" ] children
 
 
 portfolio : Html Msg
@@ -129,3 +119,18 @@ contact =
 homeArrow : Html Msg
 homeArrow =
     a [ href "#" ] [ text "←" ]
+
+
+question : List (Html Msg) -> Html Msg
+question children =
+    p [ class "question" ] children
+
+
+answer : List (Html Msg) -> Html Msg
+answer children =
+    p [ class "answer" ] children
+
+
+constant : String -> Html Msg
+constant text_ =
+    span [ class "constant" ] [ text text_ ]

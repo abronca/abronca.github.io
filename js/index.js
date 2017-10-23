@@ -9941,6 +9941,40 @@ var _user$project$Update$update = F2(
 		};
 	});
 
+var _user$project$View$constant = function (text_) {
+	return A2(
+		_elm_lang$html$Html$span,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('constant'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(text_),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$View$answer = function (children) {
+	return A2(
+		_elm_lang$html$Html$p,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('answer'),
+			_1: {ctor: '[]'}
+		},
+		children);
+};
+var _user$project$View$question = function (children) {
+	return A2(
+		_elm_lang$html$Html$p,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('question'),
+			_1: {ctor: '[]'}
+		},
+		children);
+};
 var _user$project$View$homeArrow = A2(
 	_elm_lang$html$Html$a,
 	{
@@ -10127,26 +10161,6 @@ var _user$project$View$portfolio = A2(
 			}
 		}
 	});
-var _user$project$View$answer = function (children) {
-	return A2(
-		_elm_lang$html$Html$p,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('answer'),
-			_1: {ctor: '[]'}
-		},
-		children);
-};
-var _user$project$View$question = function (children) {
-	return A2(
-		_elm_lang$html$Html$p,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('question'),
-			_1: {ctor: '[]'}
-		},
-		children);
-};
 var _user$project$View$about = A2(
 	_elm_lang$html$Html$div,
 	{ctor: '[]'},
@@ -10175,103 +10189,37 @@ var _user$project$View$about = A2(
 							_0: _elm_lang$html$Html$text('I write code in NYC. I\'m proficient in '),
 							_1: {
 								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$span,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('constant'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text('JavaScript'),
-										_1: {ctor: '[]'}
-									}),
+								_0: _user$project$View$constant('JavaScript'),
 								_1: {
 									ctor: '::',
 									_0: _elm_lang$html$Html$text(', '),
 									_1: {
 										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('constant'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('Ruby'),
-												_1: {ctor: '[]'}
-											}),
+										_0: _user$project$View$constant('Ruby'),
 										_1: {
 											ctor: '::',
 											_0: _elm_lang$html$Html$text(', and '),
 											_1: {
 												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$span,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('constant'),
-														_1: {ctor: '[]'}
-													},
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html$text('SQL'),
-														_1: {ctor: '[]'}
-													}),
+												_0: _user$project$View$constant('SQL'),
 												_1: {
 													ctor: '::',
 													_0: _elm_lang$html$Html$text('. I\'m also comfortable with '),
 													_1: {
 														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$span,
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$class('constant'),
-																_1: {ctor: '[]'}
-															},
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html$text('Rails'),
-																_1: {ctor: '[]'}
-															}),
+														_0: _user$project$View$constant('Rails'),
 														_1: {
 															ctor: '::',
 															_0: _elm_lang$html$Html$text(', '),
 															_1: {
 																ctor: '::',
-																_0: A2(
-																	_elm_lang$html$Html$span,
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Attributes$class('constant'),
-																		_1: {ctor: '[]'}
-																	},
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html$text('React'),
-																		_1: {ctor: '[]'}
-																	}),
+																_0: _user$project$View$constant('React'),
 																_1: {
 																	ctor: '::',
 																	_0: _elm_lang$html$Html$text(', and '),
 																	_1: {
 																		ctor: '::',
-																		_0: A2(
-																			_elm_lang$html$Html$span,
-																			{
-																				ctor: '::',
-																				_0: _elm_lang$html$Html_Attributes$class('constant'),
-																				_1: {ctor: '[]'}
-																			},
-																			{
-																				ctor: '::',
-																				_0: _elm_lang$html$Html$text('Redux'),
-																				_1: {ctor: '[]'}
-																			}),
+																		_0: _user$project$View$constant('Redux'),
 																		_1: {
 																			ctor: '::',
 																			_0: _elm_lang$html$Html$text('. I currently teach at App Academy NYC.'),
@@ -10305,52 +10253,19 @@ var _user$project$View$about = A2(
 									_0: _elm_lang$html$Html$text('Some of my favorite video games are '),
 									_1: {
 										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('constant'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('EarthBound'),
-												_1: {ctor: '[]'}
-											}),
+										_0: _user$project$View$constant('EarthBound'),
 										_1: {
 											ctor: '::',
 											_0: _elm_lang$html$Html$text(', '),
 											_1: {
 												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$span,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('constant'),
-														_1: {ctor: '[]'}
-													},
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html$text('Fez'),
-														_1: {ctor: '[]'}
-													}),
+												_0: _user$project$View$constant('Fez'),
 												_1: {
 													ctor: '::',
 													_0: _elm_lang$html$Html$text(', and '),
 													_1: {
 														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$span,
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$class('constant'),
-																_1: {ctor: '[]'}
-															},
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html$text('Portal'),
-																_1: {ctor: '[]'}
-															}),
+														_0: _user$project$View$constant('Portal'),
 														_1: {
 															ctor: '::',
 															_0: _elm_lang$html$Html$text('. I also play guitar and occasionally write music.'),
