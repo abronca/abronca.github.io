@@ -11,7 +11,7 @@ view : Model -> Html Msg
 view model =
     div [ class "main" ]
         [ header
-        , page model.route
+        , page model
         ]
 
 
@@ -23,28 +23,31 @@ header =
         ]
 
 
-page : Route -> Html Msg
-page route =
-    case route of
-        Home ->
+page : Model -> Html Msg
+page model =
+    case model.route of
+        HomeRoute ->
             home
 
-        About ->
+        AboutRoute ->
             about
 
-        Portfolio ->
+        PortfolioRoute ->
             portfolio
 
-        Contact ->
+        ContactRoute ->
             contact
+
+        NotFoundRoute ->
+            text "404 - Page not found"
 
 
 home : Html Msg
 home =
     nav [ class "menu" ]
-        [ a [ href "#", onClick (GoTo About) ] [ text "about" ]
-        , a [ href "#", onClick (GoTo Portfolio) ] [ text "portfolio" ]
-        , a [ href "#", onClick (GoTo Contact) ] [ text "contact" ]
+        [ a [ href "#about" ] [ text "about" ]
+        , a [ href "#portfolio" ] [ text "portfolio" ]
+        , a [ href "#contact" ] [ text "contact" ]
         ]
 
 
@@ -125,4 +128,4 @@ contact =
 
 homeArrow : Html Msg
 homeArrow =
-    a [ href "#", onClick (GoTo Home) ] [ text "←" ]
+    a [ href "#" ] [ text "←" ]

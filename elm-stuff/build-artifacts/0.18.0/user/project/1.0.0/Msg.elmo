@@ -1,3 +1,3 @@
-var _user$project$Msg$GoTo = function (a) {
-	return {ctor: 'GoTo', _0: a};
+var _user$project$Msg$UrlChange = function (a) {
+	return {ctor: 'UrlChange', _0: a};
 };

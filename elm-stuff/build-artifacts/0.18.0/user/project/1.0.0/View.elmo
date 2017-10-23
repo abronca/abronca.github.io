@@ -3,12 +3,7 @@ var _user$project$View$homeArrow = A2(
 	{
 		ctor: '::',
 		_0: _elm_lang$html$Html_Attributes$href('#'),
-		_1: {
-			ctor: '::',
-			_0: _elm_lang$html$Html_Events$onClick(
-				_user$project$Msg$GoTo(_user$project$Model$Home)),
-			_1: {ctor: '[]'}
-		}
+		_1: {ctor: '[]'}
 	},
 	{
 		ctor: '::',
@@ -459,13 +454,8 @@ var _user$project$View$home = A2(
 			_elm_lang$html$Html$a,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$href('#'),
-				_1: {
-					ctor: '::',
-					_0: _elm_lang$html$Html_Events$onClick(
-						_user$project$Msg$GoTo(_user$project$Model$About)),
-					_1: {ctor: '[]'}
-				}
+				_0: _elm_lang$html$Html_Attributes$href('#about'),
+				_1: {ctor: '[]'}
 			},
 			{
 				ctor: '::',
@@ -478,13 +468,8 @@ var _user$project$View$home = A2(
 				_elm_lang$html$Html$a,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$href('#'),
-					_1: {
-						ctor: '::',
-						_0: _elm_lang$html$Html_Events$onClick(
-							_user$project$Msg$GoTo(_user$project$Model$Portfolio)),
-						_1: {ctor: '[]'}
-					}
+					_0: _elm_lang$html$Html_Attributes$href('#portfolio'),
+					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
@@ -497,13 +482,8 @@ var _user$project$View$home = A2(
 					_elm_lang$html$Html$a,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$href('#'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(
-								_user$project$Msg$GoTo(_user$project$Model$Contact)),
-							_1: {ctor: '[]'}
-						}
+						_0: _elm_lang$html$Html_Attributes$href('#contact'),
+						_1: {ctor: '[]'}
 					},
 					{
 						ctor: '::',
@@ -514,17 +494,19 @@ var _user$project$View$home = A2(
 			}
 		}
 	});
-var _user$project$View$page = function (route) {
-	var _p0 = route;
+var _user$project$View$page = function (model) {
+	var _p0 = model.route;
 	switch (_p0.ctor) {
-		case 'Home':
+		case 'HomeRoute':
 			return _user$project$View$home;
-		case 'About':
+		case 'AboutRoute':
 			return _user$project$View$about;
-		case 'Portfolio':
+		case 'PortfolioRoute':
 			return _user$project$View$portfolio;
-		default:
+		case 'ContactRoute':
 			return _user$project$View$contact;
+		default:
+			return _elm_lang$html$Html$text('404 - Page not found');
 	}
 };
 var _user$project$View$header = A2(
@@ -570,7 +552,7 @@ var _user$project$View$view = function (model) {
 			_0: _user$project$View$header,
 			_1: {
 				ctor: '::',
-				_0: _user$project$View$page(model.route),
+				_0: _user$project$View$page(model),
 				_1: {ctor: '[]'}
 			}
 		});

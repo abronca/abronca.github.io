@@ -6,12 +6,13 @@ type alias Model =
 
 
 type Route
-    = Home
-    | About
-    | Portfolio
-    | Contact
+    = HomeRoute
+    | AboutRoute
+    | PortfolioRoute
+    | ContactRoute
+    | NotFoundRoute
 
 
-model : Model
-model =
-    { route = Home }
+initialModel : Route -> Model
+initialModel route =
+    { route = route }
