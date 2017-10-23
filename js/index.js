@@ -8260,75 +8260,45 @@ var _elm_lang$html$Html_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 
-var _user$project$Main$update = F2(
+var _user$project$Model$Model = function (a) {
+	return {route: a};
+};
+var _user$project$Model$Contact = {ctor: 'Contact'};
+var _user$project$Model$Portfolio = {ctor: 'Portfolio'};
+var _user$project$Model$About = {ctor: 'About'};
+var _user$project$Model$Home = {ctor: 'Home'};
+var _user$project$Model$model = {route: _user$project$Model$Home};
+
+var _user$project$Msg$GoTo = function (a) {
+	return {ctor: 'GoTo', _0: a};
+};
+
+var _user$project$Update$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		return _elm_lang$core$Native_Utils.update(
 			model,
 			{route: _p0._0});
 	});
-var _user$project$Main$answer = function (children) {
-	return A2(
-		_elm_lang$html$Html$p,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('answer'),
-			_1: {ctor: '[]'}
-		},
-		children);
-};
-var _user$project$Main$question = function (children) {
-	return A2(
-		_elm_lang$html$Html$p,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('question'),
-			_1: {ctor: '[]'}
-		},
-		children);
-};
-var _user$project$Main$header = A2(
-	_elm_lang$html$Html$h1,
+
+var _user$project$View$homeArrow = A2(
+	_elm_lang$html$Html$a,
 	{
 		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('header'),
-		_1: {ctor: '[]'}
+		_0: _elm_lang$html$Html_Attributes$href('#'),
+		_1: {
+			ctor: '::',
+			_0: _elm_lang$html$Html_Events$onClick(
+				_user$project$Msg$GoTo(_user$project$Model$Home)),
+			_1: {ctor: '[]'}
+		}
 	},
 	{
 		ctor: '::',
-		_0: A2(
-			_elm_lang$html$Html$div,
-			{ctor: '[]'},
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html$text('🐊'),
-				_1: {ctor: '[]'}
-			}),
-		_1: {
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('alexander bronca'),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		}
+		_0: _elm_lang$html$Html$text('←'),
+		_1: {ctor: '[]'}
 	});
-var _user$project$Main$Model = function (a) {
-	return {route: a};
-};
-var _user$project$Main$Contact = {ctor: 'Contact'};
-var _user$project$Main$Portfolio = {ctor: 'Portfolio'};
-var _user$project$Main$About = {ctor: 'About'};
-var _user$project$Main$Home = {ctor: 'Home'};
-var _user$project$Main$model = {route: _user$project$Main$Home};
-var _user$project$Main$GoTo = function (a) {
-	return {ctor: 'GoTo', _0: a};
-};
-var _user$project$Main$home = A2(
+var _user$project$View$contact = A2(
 	_elm_lang$html$Html$nav,
 	{
 		ctor: '::',
@@ -8341,17 +8311,12 @@ var _user$project$Main$home = A2(
 			_elm_lang$html$Html$a,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$href('#'),
-				_1: {
-					ctor: '::',
-					_0: _elm_lang$html$Html_Events$onClick(
-						_user$project$Main$GoTo(_user$project$Main$About)),
-					_1: {ctor: '[]'}
-				}
+				_0: _elm_lang$html$Html_Attributes$href('mailto:alexander.bronca@gmail.com'),
+				_1: {ctor: '[]'}
 			},
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html$text('about'),
+				_0: _elm_lang$html$Html$text('email'),
 				_1: {ctor: '[]'}
 			}),
 		_1: {
@@ -8360,17 +8325,12 @@ var _user$project$Main$home = A2(
 				_elm_lang$html$Html$a,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$href('#'),
-					_1: {
-						ctor: '::',
-						_0: _elm_lang$html$Html_Events$onClick(
-							_user$project$Main$GoTo(_user$project$Main$Portfolio)),
-						_1: {ctor: '[]'}
-					}
+					_0: _elm_lang$html$Html_Attributes$href('https://github.com/albronca'),
+					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('portfolio'),
+					_0: _elm_lang$html$Html$text('github'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -8379,41 +8339,160 @@ var _user$project$Main$home = A2(
 					_elm_lang$html$Html$a,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$href('#'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(
-								_user$project$Main$GoTo(_user$project$Main$Contact)),
-							_1: {ctor: '[]'}
-						}
+						_0: _elm_lang$html$Html_Attributes$href('https://www.linkedin.com/in/albronca/'),
+						_1: {ctor: '[]'}
 					},
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text('contact'),
+						_0: _elm_lang$html$Html$text('linkedin'),
 						_1: {ctor: '[]'}
 					}),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$a,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$href('https://twitter.com/al_br_'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('twitter'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: _user$project$View$homeArrow,
+						_1: {ctor: '[]'}
+					}
+				}
 			}
 		}
 	});
-var _user$project$Main$homeArrow = A2(
-	_elm_lang$html$Html$a,
+var _user$project$View$portfolio = A2(
+	_elm_lang$html$Html$nav,
 	{
 		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$href('#'),
-		_1: {
-			ctor: '::',
-			_0: _elm_lang$html$Html_Events$onClick(
-				_user$project$Main$GoTo(_user$project$Main$Home)),
-			_1: {ctor: '[]'}
-		}
+		_0: _elm_lang$html$Html_Attributes$class('menu'),
+		_1: {ctor: '[]'}
 	},
 	{
 		ctor: '::',
-		_0: _elm_lang$html$Html$text('←'),
-		_1: {ctor: '[]'}
+		_0: A2(
+			_elm_lang$html$Html$p,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('portfolio-item'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$a,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$href('https://github.com/albronca/sloth'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('sloth'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('(a rails/react/redux slack clone)'),
+					_1: {ctor: '[]'}
+				}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$p,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('portfolio-item'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$a,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$href('https://github.com/albronca/snake'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('snake'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('(using oo principles and a little jquery'),
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$p,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('portfolio-item'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$a,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$href('https://github.com/albronca/chessrb'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('chess'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('(a cli game written in ruby)'),
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {
+					ctor: '::',
+					_0: _user$project$View$homeArrow,
+					_1: {ctor: '[]'}
+				}
+			}
+		}
 	});
-var _user$project$Main$about = A2(
+var _user$project$View$answer = function (children) {
+	return A2(
+		_elm_lang$html$Html$p,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('answer'),
+			_1: {ctor: '[]'}
+		},
+		children);
+};
+var _user$project$View$question = function (children) {
+	return A2(
+		_elm_lang$html$Html$p,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('question'),
+			_1: {ctor: '[]'}
+		},
+		children);
+};
+var _user$project$View$about = A2(
 	_elm_lang$html$Html$div,
 	{ctor: '[]'},
 	{
@@ -8427,7 +8506,7 @@ var _user$project$Main$about = A2(
 			},
 			{
 				ctor: '::',
-				_0: _user$project$Main$question(
+				_0: _user$project$View$question(
 					{
 						ctor: '::',
 						_0: _elm_lang$html$Html$text('What do you do?'),
@@ -8435,7 +8514,7 @@ var _user$project$Main$about = A2(
 					}),
 				_1: {
 					ctor: '::',
-					_0: _user$project$Main$answer(
+					_0: _user$project$View$answer(
 						{
 							ctor: '::',
 							_0: _elm_lang$html$Html$text('I write code in NYC. I\'m proficient in '),
@@ -8557,7 +8636,7 @@ var _user$project$Main$about = A2(
 						}),
 					_1: {
 						ctor: '::',
-						_0: _user$project$Main$question(
+						_0: _user$project$View$question(
 							{
 								ctor: '::',
 								_0: _elm_lang$html$Html$text('Do you have any hobbies?'),
@@ -8565,7 +8644,7 @@ var _user$project$Main$about = A2(
 							}),
 						_1: {
 							ctor: '::',
-							_0: _user$project$Main$answer(
+							_0: _user$project$View$answer(
 								{
 									ctor: '::',
 									_0: _elm_lang$html$Html$text('Some of my favorite video games are '),
@@ -8644,115 +8723,13 @@ var _user$project$Main$about = A2(
 				},
 				{
 					ctor: '::',
-					_0: _user$project$Main$homeArrow,
+					_0: _user$project$View$homeArrow,
 					_1: {ctor: '[]'}
 				}),
 			_1: {ctor: '[]'}
 		}
 	});
-var _user$project$Main$portfolio = A2(
-	_elm_lang$html$Html$nav,
-	{
-		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('menu'),
-		_1: {ctor: '[]'}
-	},
-	{
-		ctor: '::',
-		_0: A2(
-			_elm_lang$html$Html$p,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('portfolio-item'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$a,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$href('https://github.com/albronca/sloth'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text('sloth'),
-						_1: {ctor: '[]'}
-					}),
-				_1: {
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('(a rails/react/redux slack clone)'),
-					_1: {ctor: '[]'}
-				}
-			}),
-		_1: {
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$p,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('portfolio-item'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$a,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$href('https://github.com/albronca/snake'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('snake'),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: _elm_lang$html$Html$text('(using oo principles and a little jquery'),
-						_1: {ctor: '[]'}
-					}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$p,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('portfolio-item'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$a,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$href('https://github.com/albronca/chessrb'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text('chess'),
-								_1: {ctor: '[]'}
-							}),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('(a cli game written in ruby)'),
-							_1: {ctor: '[]'}
-						}
-					}),
-				_1: {
-					ctor: '::',
-					_0: _user$project$Main$homeArrow,
-					_1: {ctor: '[]'}
-				}
-			}
-		}
-	});
-var _user$project$Main$contact = A2(
+var _user$project$View$home = A2(
 	_elm_lang$html$Html$nav,
 	{
 		ctor: '::',
@@ -8765,12 +8742,17 @@ var _user$project$Main$contact = A2(
 			_elm_lang$html$Html$a,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$href('mailto:alexander.bronca@gmail.com'),
-				_1: {ctor: '[]'}
+				_0: _elm_lang$html$Html_Attributes$href('#'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Events$onClick(
+						_user$project$Msg$GoTo(_user$project$Model$About)),
+					_1: {ctor: '[]'}
+				}
 			},
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html$text('email'),
+				_0: _elm_lang$html$Html$text('about'),
 				_1: {ctor: '[]'}
 			}),
 		_1: {
@@ -8779,12 +8761,17 @@ var _user$project$Main$contact = A2(
 				_elm_lang$html$Html$a,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$href('https://github.com/albronca'),
-					_1: {ctor: '[]'}
+					_0: _elm_lang$html$Html_Attributes$href('#'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onClick(
+							_user$project$Msg$GoTo(_user$project$Model$Portfolio)),
+						_1: {ctor: '[]'}
+					}
 				},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('github'),
+					_0: _elm_lang$html$Html$text('portfolio'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -8793,51 +8780,67 @@ var _user$project$Main$contact = A2(
 					_elm_lang$html$Html$a,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$href('https://www.linkedin.com/in/albronca/'),
-						_1: {ctor: '[]'}
+						_0: _elm_lang$html$Html_Attributes$href('#'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onClick(
+								_user$project$Msg$GoTo(_user$project$Model$Contact)),
+							_1: {ctor: '[]'}
+						}
 					},
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text('linkedin'),
+						_0: _elm_lang$html$Html$text('contact'),
 						_1: {ctor: '[]'}
 					}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$a,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$href('https://twitter.com/al_br_'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('twitter'),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: _user$project$Main$homeArrow,
-						_1: {ctor: '[]'}
-					}
-				}
+				_1: {ctor: '[]'}
 			}
 		}
 	});
-var _user$project$Main$page = function (route) {
-	var _p1 = route;
-	switch (_p1.ctor) {
+var _user$project$View$page = function (route) {
+	var _p0 = route;
+	switch (_p0.ctor) {
 		case 'Home':
-			return _user$project$Main$home;
+			return _user$project$View$home;
 		case 'About':
-			return _user$project$Main$about;
+			return _user$project$View$about;
 		case 'Portfolio':
-			return _user$project$Main$portfolio;
+			return _user$project$View$portfolio;
 		default:
-			return _user$project$Main$contact;
+			return _user$project$View$contact;
 	}
 };
-var _user$project$Main$view = function (model) {
+var _user$project$View$header = A2(
+	_elm_lang$html$Html$h1,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$class('header'),
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$div,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text('🐊'),
+				_1: {ctor: '[]'}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('alexander bronca'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$View$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -8847,16 +8850,17 @@ var _user$project$Main$view = function (model) {
 		},
 		{
 			ctor: '::',
-			_0: _user$project$Main$header,
+			_0: _user$project$View$header,
 			_1: {
 				ctor: '::',
-				_0: _user$project$Main$page(model.route),
+				_0: _user$project$View$page(model.route),
 				_1: {ctor: '[]'}
 			}
 		});
 };
+
 var _user$project$Main$main = _elm_lang$html$Html$beginnerProgram(
-	{model: _user$project$Main$model, view: _user$project$Main$view, update: _user$project$Main$update})();
+	{model: _user$project$Model$model, view: _user$project$View$view, update: _user$project$Update$update})();
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};

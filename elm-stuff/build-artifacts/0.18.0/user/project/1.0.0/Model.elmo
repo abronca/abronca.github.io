@@ -1,0 +1,8 @@
+var _user$project$Model$Model = function (a) {
+	return {route: a};
+};
+var _user$project$Model$Contact = {ctor: 'Contact'};
+var _user$project$Model$Portfolio = {ctor: 'Portfolio'};
+var _user$project$Model$About = {ctor: 'About'};
+var _user$project$Model$Home = {ctor: 'Home'};
+var _user$project$Model$model = {route: _user$project$Model$Home};
