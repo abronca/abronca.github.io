@@ -10120,7 +10120,7 @@ var _user$project$View$portfolio = A2(
 						}),
 					_1: {
 						ctor: '::',
-						_0: _elm_lang$html$Html$text('(using oo principles and a little jquery'),
+						_0: _elm_lang$html$Html$text('(using oo principles and a little jquery)'),
 						_1: {ctor: '[]'}
 					}
 				}),
@@ -10204,7 +10204,7 @@ var _user$project$View$about = A2(
 												_0: _user$project$View$constant('SQL'),
 												_1: {
 													ctor: '::',
-													_0: _elm_lang$html$Html$text('. I\'m also comfortable with '),
+													_0: _elm_lang$html$Html$text('. I\'m comfortable using '),
 													_1: {
 														ctor: '::',
 														_0: _user$project$View$constant('Rails'),
@@ -10364,7 +10364,36 @@ var _user$project$View$page = function (model) {
 		case 'ContactRoute':
 			return _user$project$View$contact;
 		default:
-			return _elm_lang$html$Html$text('404 - Page not found');
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$p,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('404 - Page not found'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$nav,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('menu'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _user$project$View$homeArrow,
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				});
 	}
 };
 var _user$project$View$header = A2(

@@ -39,7 +39,10 @@ page model =
             contact
 
         NotFoundRoute ->
-            text "404 - Page not found"
+            div []
+                [ p [] [ text "404 - Page not found" ]
+                , nav [ class "menu" ] [ homeArrow ]
+                ]
 
 
 home : Html Msg
@@ -63,7 +66,7 @@ about =
                 , constant "Ruby"
                 , text ", and "
                 , constant "SQL"
-                , text ". I'm also comfortable with "
+                , text ". I'm comfortable using "
                 , constant "Rails"
                 , text ", "
                 , constant "React"
@@ -95,7 +98,7 @@ portfolio =
             ]
         , p [ class "portfolio-item" ]
             [ a [ href "https://github.com/albronca/snake" ] [ text "snake" ]
-            , text "(using oo principles and a little jquery"
+            , text "(using oo principles and a little jquery)"
             ]
         , p [ class "portfolio-item" ]
             [ a [ href "https://github.com/albronca/chessrb" ] [ text "chess" ]
