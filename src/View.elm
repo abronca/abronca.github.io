@@ -2,7 +2,6 @@ module View exposing (view)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (..)
 import Msg exposing (Msg(..))
 import Model exposing (Model, Route(..))
 
