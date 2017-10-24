@@ -9826,7 +9826,7 @@ var _user$project$Update$update = F2(
 		};
 	});
 
-var _user$project$View$constant = function (text_) {
+var _user$project$View_Utils$constant = function (text_) {
 	return A2(
 		_elm_lang$html$Html$span,
 		{
@@ -9840,7 +9840,7 @@ var _user$project$View$constant = function (text_) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$View$answer = function (children) {
+var _user$project$View_Utils$answer = function (children) {
 	return A2(
 		_elm_lang$html$Html$p,
 		{
@@ -9850,7 +9850,7 @@ var _user$project$View$answer = function (children) {
 		},
 		children);
 };
-var _user$project$View$question = function (children) {
+var _user$project$View_Utils$question = function (children) {
 	return A2(
 		_elm_lang$html$Html$p,
 		{
@@ -9860,7 +9860,7 @@ var _user$project$View$question = function (children) {
 		},
 		children);
 };
-var _user$project$View$homeArrow = A2(
+var _user$project$View_Utils$homeArrow = A2(
 	_elm_lang$html$Html$a,
 	{
 		ctor: '::',
@@ -9872,7 +9872,147 @@ var _user$project$View$homeArrow = A2(
 		_0: _elm_lang$html$Html$text('←'),
 		_1: {ctor: '[]'}
 	});
-var _user$project$View$contact = A2(
+
+var _user$project$View_AboutPage$aboutPage = A2(
+	_elm_lang$html$Html$div,
+	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('dialogue'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _user$project$View_Utils$question(
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('What do you do?'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: _user$project$View_Utils$answer(
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('I write code in NYC. I\'m proficient in '),
+							_1: {
+								ctor: '::',
+								_0: _user$project$View_Utils$constant('JavaScript'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(', '),
+									_1: {
+										ctor: '::',
+										_0: _user$project$View_Utils$constant('Ruby'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html$text(', and '),
+											_1: {
+												ctor: '::',
+												_0: _user$project$View_Utils$constant('SQL'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('. I\'m comfortable using '),
+													_1: {
+														ctor: '::',
+														_0: _user$project$View_Utils$constant('Rails'),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html$text(', '),
+															_1: {
+																ctor: '::',
+																_0: _user$project$View_Utils$constant('React'),
+																_1: {
+																	ctor: '::',
+																	_0: _elm_lang$html$Html$text(', and '),
+																	_1: {
+																		ctor: '::',
+																		_0: _user$project$View_Utils$constant('Redux'),
+																		_1: {
+																			ctor: '::',
+																			_0: _elm_lang$html$Html$text('. I currently teach at App Academy NYC.'),
+																			_1: {ctor: '[]'}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: _user$project$View_Utils$question(
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('Do you have any hobbies?'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: _user$project$View_Utils$answer(
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('Some of my favorite video games are '),
+									_1: {
+										ctor: '::',
+										_0: _user$project$View_Utils$constant('EarthBound'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html$text(', '),
+											_1: {
+												ctor: '::',
+												_0: _user$project$View_Utils$constant('Fez'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html$text(', and '),
+													_1: {
+														ctor: '::',
+														_0: _user$project$View_Utils$constant('Portal'),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html$text('. I also play guitar and occasionally write music.'),
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$nav,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('menu'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _user$project$View_Utils$homeArrow,
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		}
+	});
+
+var _user$project$View_ContactPage$contactPage = A2(
 	_elm_lang$html$Html$nav,
 	{
 		ctor: '::',
@@ -9937,14 +10077,69 @@ var _user$project$View$contact = A2(
 						}),
 					_1: {
 						ctor: '::',
-						_0: _user$project$View$homeArrow,
+						_0: _user$project$View_Utils$homeArrow,
 						_1: {ctor: '[]'}
 					}
 				}
 			}
 		}
 	});
-var _user$project$View$portfolio = A2(
+
+var _user$project$View_HomePage$homePage = A2(
+	_elm_lang$html$Html$nav,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$class('menu'),
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$a,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$href('#about'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text('about'),
+				_1: {ctor: '[]'}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$a,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$href('#portfolio'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('portfolio'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$a,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$href('#contact'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('contact'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+
+var _user$project$View_PortfolioPage$portfolioPage = A2(
 	_elm_lang$html$Html$nav,
 	{
 		ctor: '::',
@@ -10040,214 +10235,24 @@ var _user$project$View$portfolio = A2(
 					}),
 				_1: {
 					ctor: '::',
-					_0: _user$project$View$homeArrow,
+					_0: _user$project$View_Utils$homeArrow,
 					_1: {ctor: '[]'}
 				}
 			}
 		}
 	});
-var _user$project$View$about = A2(
-	_elm_lang$html$Html$div,
-	{ctor: '[]'},
-	{
-		ctor: '::',
-		_0: A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('dialogue'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: _user$project$View$question(
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text('What do you do?'),
-						_1: {ctor: '[]'}
-					}),
-				_1: {
-					ctor: '::',
-					_0: _user$project$View$answer(
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('I write code in NYC. I\'m proficient in '),
-							_1: {
-								ctor: '::',
-								_0: _user$project$View$constant('JavaScript'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html$text(', '),
-									_1: {
-										ctor: '::',
-										_0: _user$project$View$constant('Ruby'),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html$text(', and '),
-											_1: {
-												ctor: '::',
-												_0: _user$project$View$constant('SQL'),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html$text('. I\'m comfortable using '),
-													_1: {
-														ctor: '::',
-														_0: _user$project$View$constant('Rails'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html$text(', '),
-															_1: {
-																ctor: '::',
-																_0: _user$project$View$constant('React'),
-																_1: {
-																	ctor: '::',
-																	_0: _elm_lang$html$Html$text(', and '),
-																	_1: {
-																		ctor: '::',
-																		_0: _user$project$View$constant('Redux'),
-																		_1: {
-																			ctor: '::',
-																			_0: _elm_lang$html$Html$text('. I currently teach at App Academy NYC.'),
-																			_1: {ctor: '[]'}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}),
-					_1: {
-						ctor: '::',
-						_0: _user$project$View$question(
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text('Do you have any hobbies?'),
-								_1: {ctor: '[]'}
-							}),
-						_1: {
-							ctor: '::',
-							_0: _user$project$View$answer(
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text('Some of my favorite video games are '),
-									_1: {
-										ctor: '::',
-										_0: _user$project$View$constant('EarthBound'),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html$text(', '),
-											_1: {
-												ctor: '::',
-												_0: _user$project$View$constant('Fez'),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html$text(', and '),
-													_1: {
-														ctor: '::',
-														_0: _user$project$View$constant('Portal'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html$text('. I also play guitar and occasionally write music.'),
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}
-										}
-									}
-								}),
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			}),
-		_1: {
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$nav,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('menu'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: _user$project$View$homeArrow,
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		}
-	});
-var _user$project$View$home = A2(
-	_elm_lang$html$Html$nav,
-	{
-		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('menu'),
-		_1: {ctor: '[]'}
-	},
-	{
-		ctor: '::',
-		_0: A2(
-			_elm_lang$html$Html$a,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$href('#about'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html$text('about'),
-				_1: {ctor: '[]'}
-			}),
-		_1: {
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$a,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$href('#portfolio'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('portfolio'),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$a,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$href('#contact'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text('contact'),
-						_1: {ctor: '[]'}
-					}),
-				_1: {ctor: '[]'}
-			}
-		}
-	});
-var _user$project$View$page = function (model) {
+
+var _user$project$View$currentPage = function (model) {
 	var _p0 = model.route;
 	switch (_p0.ctor) {
 		case 'HomeRoute':
-			return _user$project$View$home;
+			return _user$project$View_HomePage$homePage;
 		case 'AboutRoute':
-			return _user$project$View$about;
+			return _user$project$View_AboutPage$aboutPage;
 		case 'PortfolioRoute':
-			return _user$project$View$portfolio;
+			return _user$project$View_PortfolioPage$portfolioPage;
 		case 'ContactRoute':
-			return _user$project$View$contact;
+			return _user$project$View_ContactPage$contactPage;
 		default:
 			return A2(
 				_elm_lang$html$Html$div,
@@ -10273,7 +10278,7 @@ var _user$project$View$page = function (model) {
 							},
 							{
 								ctor: '::',
-								_0: _user$project$View$homeArrow,
+								_0: _user$project$View_Utils$homeArrow,
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
@@ -10324,7 +10329,7 @@ var _user$project$View$view = function (model) {
 			_0: _user$project$View$header,
 			_1: {
 				ctor: '::',
-				_0: _user$project$View$page(model),
+				_0: _user$project$View$currentPage(model),
 				_1: {ctor: '[]'}
 			}
 		});

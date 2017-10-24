@@ -1,0 +1,138 @@
+var _user$project$View_AboutPage$aboutPage = A2(
+	_elm_lang$html$Html$div,
+	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('dialogue'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _user$project$View_Utils$question(
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('What do you do?'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: _user$project$View_Utils$answer(
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('I write code in NYC. I\'m proficient in '),
+							_1: {
+								ctor: '::',
+								_0: _user$project$View_Utils$constant('JavaScript'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(', '),
+									_1: {
+										ctor: '::',
+										_0: _user$project$View_Utils$constant('Ruby'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html$text(', and '),
+											_1: {
+												ctor: '::',
+												_0: _user$project$View_Utils$constant('SQL'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('. I\'m comfortable using '),
+													_1: {
+														ctor: '::',
+														_0: _user$project$View_Utils$constant('Rails'),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html$text(', '),
+															_1: {
+																ctor: '::',
+																_0: _user$project$View_Utils$constant('React'),
+																_1: {
+																	ctor: '::',
+																	_0: _elm_lang$html$Html$text(', and '),
+																	_1: {
+																		ctor: '::',
+																		_0: _user$project$View_Utils$constant('Redux'),
+																		_1: {
+																			ctor: '::',
+																			_0: _elm_lang$html$Html$text('. I currently teach at App Academy NYC.'),
+																			_1: {ctor: '[]'}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: _user$project$View_Utils$question(
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('Do you have any hobbies?'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: _user$project$View_Utils$answer(
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('Some of my favorite video games are '),
+									_1: {
+										ctor: '::',
+										_0: _user$project$View_Utils$constant('EarthBound'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html$text(', '),
+											_1: {
+												ctor: '::',
+												_0: _user$project$View_Utils$constant('Fez'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html$text(', and '),
+													_1: {
+														ctor: '::',
+														_0: _user$project$View_Utils$constant('Portal'),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html$text('. I also play guitar and occasionally write music.'),
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$nav,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('menu'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _user$project$View_Utils$homeArrow,
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		}
+	});
