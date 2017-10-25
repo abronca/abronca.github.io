@@ -1,14 +1,16 @@
 module View.HomePage exposing (homePage)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Element exposing (..)
+import Element.Attributes exposing (..)
 import Msg exposing (Msg)
+import Styles exposing (Styles(..))
 
 
-homePage : Html Msg
+homePage : Element Styles variation Msg
 homePage =
-    nav [ class "menu" ]
-        [ a [ href "#about" ] [ text "about" ]
-        , a [ href "#portfolio" ] [ text "portfolio" ]
-        , a [ href "#contact" ] [ text "contact" ]
+    column Menu
+        [ center ]
+        [ link "#about" (el MenuLink [] (text "about"))
+        , link "#portfolio" (el MenuLink [] (text "portfolio"))
+        , link "#contact" (el MenuLink [] (text "contact"))
         ]

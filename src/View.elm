@@ -1,49 +1,61 @@
 module View exposing (view)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Msg exposing (Msg(..))
+import Html exposing (Html)
+import Element exposing (..)
+import Element.Attributes exposing (..)
+import Msg exposing (Msg)
 import Model exposing (Model, Route(..))
+import Styles exposing (Styles(..), stylesheet)
 import View.AboutPage exposing (aboutPage)
 import View.ContactPage exposing (contactPage)
 import View.HomePage exposing (homePage)
 import View.PortfolioPage exposing (portfolioPage)
-import View.Utils exposing (homeArrow)
 
 
 view : Model -> Html Msg
 view model =
-    div [ class "main" ]
-        [ header
-        , currentPage model
-        ]
+    viewport stylesheet <|
+        column Main
+            [ height fill ]
+            [ header
+            , el CurrentPage
+                [ maxWidth (px 600), center ]
+                (currentPage model)
+            ]
 
 
-header : Html Msg
+header : Element Styles variation Msg
 header =
-    h1 [ class "header" ]
-        [ div [] [ text "🐊" ]
-        , div [] [ text "alexander bronca" ]
+    column Header
+        [ paddingXY 0 30, center ]
+        [ text "🐊"
+        , text "alexander bronca"
         ]
 
 
-currentPage : Model -> Html Msg
+currentPage : Model -> Element Styles variation Msg
 currentPage model =
     case model.route of
         HomeRoute ->
             homePage
 
         AboutRoute ->
-            aboutPage
+            aboutPage |> withBackButton
 
         PortfolioRoute ->
-            portfolioPage
+            portfolioPage |> withBackButton
 
         ContactRoute ->
-            contactPage
+            contactPage |> withBackButton
 
         NotFoundRoute ->
-            div []
-                [ p [] [ text "404 - Page not found" ]
-                , nav [ class "menu" ] [ homeArrow ]
-                ]
+            empty
+
+
+withBackButton : Element Styles variation Msg -> Element Styles variation Msg
+withBackButton page =
+    column CurrentPage
+        [ center ]
+        [ page
+        , link "#" (el MenuLink [ padding 30 ] (text "←"))
+        ]
