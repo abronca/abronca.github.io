@@ -16,10 +16,10 @@ view : Model -> Html Msg
 view model =
     viewport stylesheet <|
         column Main
-            [ height fill ]
+            [ height fill, scrollbars ]
             [ header
-            , el CurrentPage
-                [ maxWidth (px 600), center ]
+            , el None
+                [ maxWidth (px 600), center, paddingXY 30 0 ]
                 (currentPage model)
             ]
 
@@ -40,7 +40,7 @@ currentPage model =
             homePage
 
         AboutRoute ->
-            aboutPage |> withBackButton
+            aboutPage model |> withBackButton
 
         PortfolioRoute ->
             portfolioPage |> withBackButton
@@ -54,7 +54,7 @@ currentPage model =
 
 withBackButton : Element Styles variation Msg -> Element Styles variation Msg
 withBackButton page =
-    column CurrentPage
+    column None
         [ center ]
         [ page
         , link "#" (el MenuLink [ padding 30 ] (text "←"))

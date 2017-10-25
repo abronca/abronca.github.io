@@ -7,22 +7,21 @@ import Style.Font as Font exposing (font, sansSerif)
 
 
 type Styles
-    = Main
+    = None
+    | Main
     | Header
-    | Menu
     | MenuLink
-    | CurrentPage
-    | About
     | AboutBullet
-    | AboutItem
     | Constant
-    | PortfolioItem
+    | PortfolioItemDesc
+    | SmallText
 
 
 stylesheet : StyleSheet Styles variation
 stylesheet =
     styleSheet
-        [ style Main
+        [ style None []
+        , style Main
             [ Font.typeface [ font "Inconsolata", sansSerif ]
             , Font.size 30
             , Color.text (rgb 188 188 188)
@@ -33,21 +32,22 @@ stylesheet =
             , Font.bold
             , Color.text (rgb 181 189 104)
             ]
-        , style Menu []
         , style MenuLink
             [ Color.text (rgb 129 162 178)
             , hover [ Font.bold ]
             , Font.center
             ]
-        , style CurrentPage []
-        , style About []
         , style AboutBullet
             [ Font.bold
             , Color.text (rgb 181 189 104)
             ]
-        , style AboutItem []
         , style Constant
             [ Color.text (rgb 240 198 116)
             ]
-        , style PortfolioItem []
+        , style PortfolioItemDesc
+            [ Font.center
+            ]
+        , style SmallText
+            [ Font.size 20
+            ]
         ]

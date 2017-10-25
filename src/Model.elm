@@ -1,8 +1,12 @@
 module Model exposing (..)
 
+import Element exposing (Device, classifyDevice)
+
 
 type alias Model =
-    { route : Route }
+    { route : Route
+    , device : Device
+    }
 
 
 type Route
@@ -15,4 +19,6 @@ type Route
 
 initialModel : Route -> Model
 initialModel route =
-    { route = route }
+    { route = route
+    , device = classifyDevice { width = 0, height = 0 }
+    }

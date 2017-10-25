@@ -8,8 +8,8 @@ import Styles exposing (Styles(..))
 
 portfolioPage : Element Styles variation Msg
 portfolioPage =
-    column Menu
-        [ center ]
+    column None
+        [ center, spacing 6 ]
         [ portfolioItem
             { link = "https://github.com/albronca/sloth"
             , title = "sloth"
@@ -37,8 +37,8 @@ type alias PortfolioItemOptions =
 
 portfolioItem : PortfolioItemOptions -> Element Styles variation Msg
 portfolioItem options =
-    column PortfolioItem
+    column None
         [ center ]
         [ link options.link (el MenuLink [] (text options.title))
-        , text options.description
+        , paragraph PortfolioItemDesc [] [ text options.description ]
         ]

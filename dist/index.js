@@ -20454,17 +20454,25 @@ var _mdgriffith$style_elements$Style_Font$typeface = function (families) {
 };
 
 var _user$project$Model$initialModel = function (route) {
-	return {route: route};
+	return {
+		route: route,
+		device: _mdgriffith$style_elements$Element$classifyDevice(
+			{width: 0, height: 0})
+	};
 };
-var _user$project$Model$Model = function (a) {
-	return {route: a};
-};
+var _user$project$Model$Model = F2(
+	function (a, b) {
+		return {route: a, device: b};
+	});
 var _user$project$Model$NotFoundRoute = {ctor: 'NotFoundRoute'};
 var _user$project$Model$ContactRoute = {ctor: 'ContactRoute'};
 var _user$project$Model$PortfolioRoute = {ctor: 'PortfolioRoute'};
 var _user$project$Model$AboutRoute = {ctor: 'AboutRoute'};
 var _user$project$Model$HomeRoute = {ctor: 'HomeRoute'};
 
+var _user$project$Msg$WindowResize = function (a) {
+	return {ctor: 'WindowResize', _0: a};
+};
 var _user$project$Msg$UrlChange = function (a) {
 	return {ctor: 'UrlChange', _0: a};
 };
@@ -20508,76 +20516,72 @@ var _user$project$Routing$parseLocation = function (location) {
 var _user$project$Update$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		var route = _user$project$Routing$parseLocation(_p0._0);
-		return {
-			ctor: '_Tuple2',
-			_0: _elm_lang$core$Native_Utils.update(
-				model,
-				{route: route}),
-			_1: _elm_lang$core$Platform_Cmd$none
-		};
+		if (_p0.ctor === 'UrlChange') {
+			var route = _user$project$Routing$parseLocation(_p0._0);
+			return {
+				ctor: '_Tuple2',
+				_0: _elm_lang$core$Native_Utils.update(
+					model,
+					{route: route}),
+				_1: _elm_lang$core$Platform_Cmd$none
+			};
+		} else {
+			var device = _mdgriffith$style_elements$Element$classifyDevice(_p0._0);
+			return {
+				ctor: '_Tuple2',
+				_0: _elm_lang$core$Native_Utils.update(
+					model,
+					{device: device}),
+				_1: _elm_lang$core$Platform_Cmd$none
+			};
+		}
 	});
 
-var _user$project$Styles$PortfolioItem = {ctor: 'PortfolioItem'};
+var _user$project$Styles$SmallText = {ctor: 'SmallText'};
+var _user$project$Styles$PortfolioItemDesc = {ctor: 'PortfolioItemDesc'};
 var _user$project$Styles$Constant = {ctor: 'Constant'};
-var _user$project$Styles$AboutItem = {ctor: 'AboutItem'};
 var _user$project$Styles$AboutBullet = {ctor: 'AboutBullet'};
-var _user$project$Styles$About = {ctor: 'About'};
-var _user$project$Styles$CurrentPage = {ctor: 'CurrentPage'};
 var _user$project$Styles$MenuLink = {ctor: 'MenuLink'};
-var _user$project$Styles$Menu = {ctor: 'Menu'};
 var _user$project$Styles$Header = {ctor: 'Header'};
 var _user$project$Styles$Main = {ctor: 'Main'};
+var _user$project$Styles$None = {ctor: 'None'};
 var _user$project$Styles$stylesheet = _mdgriffith$style_elements$Style$styleSheet(
 	{
 		ctor: '::',
 		_0: A2(
 			_mdgriffith$style_elements$Style$style,
-			_user$project$Styles$Main,
-			{
-				ctor: '::',
-				_0: _mdgriffith$style_elements$Style_Font$typeface(
-					{
-						ctor: '::',
-						_0: _mdgriffith$style_elements$Style_Font$font('Inconsolata'),
-						_1: {
-							ctor: '::',
-							_0: _mdgriffith$style_elements$Style_Font$sansSerif,
-							_1: {ctor: '[]'}
-						}
-					}),
-				_1: {
-					ctor: '::',
-					_0: _mdgriffith$style_elements$Style_Font$size(30),
-					_1: {
-						ctor: '::',
-						_0: _mdgriffith$style_elements$Style_Color$text(
-							A3(_elm_lang$core$Color$rgb, 188, 188, 188)),
-						_1: {
-							ctor: '::',
-							_0: _mdgriffith$style_elements$Style_Color$background(
-								A3(_elm_lang$core$Color$rgb, 38, 38, 38)),
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			}),
+			_user$project$Styles$None,
+			{ctor: '[]'}),
 		_1: {
 			ctor: '::',
 			_0: A2(
 				_mdgriffith$style_elements$Style$style,
-				_user$project$Styles$Header,
+				_user$project$Styles$Main,
 				{
 					ctor: '::',
-					_0: _mdgriffith$style_elements$Style_Font$size(34),
+					_0: _mdgriffith$style_elements$Style_Font$typeface(
+						{
+							ctor: '::',
+							_0: _mdgriffith$style_elements$Style_Font$font('Inconsolata'),
+							_1: {
+								ctor: '::',
+								_0: _mdgriffith$style_elements$Style_Font$sansSerif,
+								_1: {ctor: '[]'}
+							}
+						}),
 					_1: {
 						ctor: '::',
-						_0: _mdgriffith$style_elements$Style_Font$bold,
+						_0: _mdgriffith$style_elements$Style_Font$size(30),
 						_1: {
 							ctor: '::',
 							_0: _mdgriffith$style_elements$Style_Color$text(
-								A3(_elm_lang$core$Color$rgb, 181, 189, 104)),
-							_1: {ctor: '[]'}
+								A3(_elm_lang$core$Color$rgb, 188, 188, 188)),
+							_1: {
+								ctor: '::',
+								_0: _mdgriffith$style_elements$Style_Color$background(
+									A3(_elm_lang$core$Color$rgb, 38, 38, 38)),
+								_1: {ctor: '[]'}
+							}
 						}
 					}
 				}),
@@ -20585,8 +20589,21 @@ var _user$project$Styles$stylesheet = _mdgriffith$style_elements$Style$styleShee
 				ctor: '::',
 				_0: A2(
 					_mdgriffith$style_elements$Style$style,
-					_user$project$Styles$Menu,
-					{ctor: '[]'}),
+					_user$project$Styles$Header,
+					{
+						ctor: '::',
+						_0: _mdgriffith$style_elements$Style_Font$size(34),
+						_1: {
+							ctor: '::',
+							_0: _mdgriffith$style_elements$Style_Font$bold,
+							_1: {
+								ctor: '::',
+								_0: _mdgriffith$style_elements$Style_Color$text(
+									A3(_elm_lang$core$Color$rgb, 181, 189, 104)),
+								_1: {ctor: '[]'}
+							}
+						}
+					}),
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -20615,55 +20632,49 @@ var _user$project$Styles$stylesheet = _mdgriffith$style_elements$Style$styleShee
 						ctor: '::',
 						_0: A2(
 							_mdgriffith$style_elements$Style$style,
-							_user$project$Styles$CurrentPage,
-							{ctor: '[]'}),
+							_user$project$Styles$AboutBullet,
+							{
+								ctor: '::',
+								_0: _mdgriffith$style_elements$Style_Font$bold,
+								_1: {
+									ctor: '::',
+									_0: _mdgriffith$style_elements$Style_Color$text(
+										A3(_elm_lang$core$Color$rgb, 181, 189, 104)),
+									_1: {ctor: '[]'}
+								}
+							}),
 						_1: {
 							ctor: '::',
 							_0: A2(
 								_mdgriffith$style_elements$Style$style,
-								_user$project$Styles$About,
-								{ctor: '[]'}),
+								_user$project$Styles$Constant,
+								{
+									ctor: '::',
+									_0: _mdgriffith$style_elements$Style_Color$text(
+										A3(_elm_lang$core$Color$rgb, 240, 198, 116)),
+									_1: {ctor: '[]'}
+								}),
 							_1: {
 								ctor: '::',
 								_0: A2(
 									_mdgriffith$style_elements$Style$style,
-									_user$project$Styles$AboutBullet,
+									_user$project$Styles$PortfolioItemDesc,
 									{
 										ctor: '::',
-										_0: _mdgriffith$style_elements$Style_Font$bold,
-										_1: {
-											ctor: '::',
-											_0: _mdgriffith$style_elements$Style_Color$text(
-												A3(_elm_lang$core$Color$rgb, 181, 189, 104)),
-											_1: {ctor: '[]'}
-										}
+										_0: _mdgriffith$style_elements$Style_Font$center,
+										_1: {ctor: '[]'}
 									}),
 								_1: {
 									ctor: '::',
 									_0: A2(
 										_mdgriffith$style_elements$Style$style,
-										_user$project$Styles$AboutItem,
-										{ctor: '[]'}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_mdgriffith$style_elements$Style$style,
-											_user$project$Styles$Constant,
-											{
-												ctor: '::',
-												_0: _mdgriffith$style_elements$Style_Color$text(
-													A3(_elm_lang$core$Color$rgb, 240, 198, 116)),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
+										_user$project$Styles$SmallText,
+										{
 											ctor: '::',
-											_0: A2(
-												_mdgriffith$style_elements$Style$style,
-												_user$project$Styles$PortfolioItem,
-												{ctor: '[]'}),
+											_0: _mdgriffith$style_elements$Style_Font$size(20),
 											_1: {ctor: '[]'}
-										}
-									}
+										}),
+									_1: {ctor: '[]'}
 								}
 							}
 						}
@@ -20684,7 +20695,7 @@ var _user$project$View_AboutPage$aboutItem = function (bullet) {
 	return function (_p1) {
 		return A3(
 			_mdgriffith$style_elements$Element$paragraph,
-			_user$project$Styles$AboutItem,
+			_user$project$Styles$None,
 			{ctor: '[]'},
 			A2(
 				F2(
@@ -20709,69 +20720,72 @@ var _user$project$View_AboutPage$aboutItem = function (bullet) {
 };
 var _user$project$View_AboutPage$answer = _user$project$View_AboutPage$aboutItem('A:');
 var _user$project$View_AboutPage$question = _user$project$View_AboutPage$aboutItem('Q:');
-var _user$project$View_AboutPage$aboutPage = A3(
-	_mdgriffith$style_elements$Element$column,
-	_user$project$Styles$About,
-	{
-		ctor: '::',
-		_0: _mdgriffith$style_elements$Element_Attributes$alignLeft,
-		_1: {
+var _user$project$View_AboutPage$aboutPage = function (model) {
+	var style = model.device.phone ? _user$project$Styles$SmallText : _user$project$Styles$None;
+	return A3(
+		_mdgriffith$style_elements$Element$column,
+		style,
+		{
 			ctor: '::',
-			_0: _mdgriffith$style_elements$Element_Attributes$spacing(5),
-			_1: {ctor: '[]'}
-		}
-	},
-	{
-		ctor: '::',
-		_0: _user$project$View_AboutPage$question(
-			{
+			_0: _mdgriffith$style_elements$Element_Attributes$alignLeft,
+			_1: {
 				ctor: '::',
-				_0: _mdgriffith$style_elements$Element$text('What do you do?'),
+				_0: _mdgriffith$style_elements$Element_Attributes$spacing(6),
 				_1: {ctor: '[]'}
-			}),
-		_1: {
+			}
+		},
+		{
 			ctor: '::',
-			_0: _user$project$View_AboutPage$answer(
+			_0: _user$project$View_AboutPage$question(
 				{
 					ctor: '::',
-					_0: _mdgriffith$style_elements$Element$text('I write code in NYC. I\'m proficient in '),
-					_1: {
+					_0: _mdgriffith$style_elements$Element$text('What do you do?'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _user$project$View_AboutPage$answer(
+					{
 						ctor: '::',
-						_0: _user$project$View_AboutPage$constant('JavaScript'),
+						_0: _mdgriffith$style_elements$Element$text('I write code in NYC. I\'m proficient in '),
 						_1: {
 							ctor: '::',
-							_0: _mdgriffith$style_elements$Element$text(', '),
+							_0: _user$project$View_AboutPage$constant('JavaScript'),
 							_1: {
 								ctor: '::',
-								_0: _user$project$View_AboutPage$constant('Ruby'),
+								_0: _mdgriffith$style_elements$Element$text(', '),
 								_1: {
 									ctor: '::',
-									_0: _mdgriffith$style_elements$Element$text(', and '),
+									_0: _user$project$View_AboutPage$constant('Ruby'),
 									_1: {
 										ctor: '::',
-										_0: _user$project$View_AboutPage$constant('SQL'),
+										_0: _mdgriffith$style_elements$Element$text(', and '),
 										_1: {
 											ctor: '::',
-											_0: _mdgriffith$style_elements$Element$text('. I\'m comfortable using '),
+											_0: _user$project$View_AboutPage$constant('SQL'),
 											_1: {
 												ctor: '::',
-												_0: _user$project$View_AboutPage$constant('Rails'),
+												_0: _mdgriffith$style_elements$Element$text('. I\'m comfortable using '),
 												_1: {
 													ctor: '::',
-													_0: _mdgriffith$style_elements$Element$text(', '),
+													_0: _user$project$View_AboutPage$constant('Rails'),
 													_1: {
 														ctor: '::',
-														_0: _user$project$View_AboutPage$constant('React'),
+														_0: _mdgriffith$style_elements$Element$text(', '),
 														_1: {
 															ctor: '::',
-															_0: _mdgriffith$style_elements$Element$text(', and '),
+															_0: _user$project$View_AboutPage$constant('React'),
 															_1: {
 																ctor: '::',
-																_0: _user$project$View_AboutPage$constant('Redux'),
+																_0: _mdgriffith$style_elements$Element$text(', and '),
 																_1: {
 																	ctor: '::',
-																	_0: _mdgriffith$style_elements$Element$text('. I currently teach at App Academy NYC.'),
-																	_1: {ctor: '[]'}
+																	_0: _user$project$View_AboutPage$constant('Redux'),
+																	_1: {
+																		ctor: '::',
+																		_0: _mdgriffith$style_elements$Element$text('. I currently teach at App Academy NYC.'),
+																		_1: {ctor: '[]'}
+																	}
 																}
 															}
 														}
@@ -20783,57 +20797,57 @@ var _user$project$View_AboutPage$aboutPage = A3(
 								}
 							}
 						}
-					}
-				}),
-			_1: {
-				ctor: '::',
-				_0: _user$project$View_AboutPage$question(
-					{
-						ctor: '::',
-						_0: _mdgriffith$style_elements$Element$text('Do you have any hobbies?'),
-						_1: {ctor: '[]'}
 					}),
 				_1: {
 					ctor: '::',
-					_0: _user$project$View_AboutPage$answer(
+					_0: _user$project$View_AboutPage$question(
 						{
 							ctor: '::',
-							_0: _mdgriffith$style_elements$Element$text('Some of my favorite video games are '),
-							_1: {
+							_0: _mdgriffith$style_elements$Element$text('Do you have any hobbies?'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: _user$project$View_AboutPage$answer(
+							{
 								ctor: '::',
-								_0: _user$project$View_AboutPage$constant('EarthBound'),
+								_0: _mdgriffith$style_elements$Element$text('Some of my favorite video games are '),
 								_1: {
 									ctor: '::',
-									_0: _mdgriffith$style_elements$Element$text(', '),
+									_0: _user$project$View_AboutPage$constant('EarthBound'),
 									_1: {
 										ctor: '::',
-										_0: _user$project$View_AboutPage$constant('Fez'),
+										_0: _mdgriffith$style_elements$Element$text(', '),
 										_1: {
 											ctor: '::',
-											_0: _mdgriffith$style_elements$Element$text(', and '),
+											_0: _user$project$View_AboutPage$constant('Fez'),
 											_1: {
 												ctor: '::',
-												_0: _user$project$View_AboutPage$constant('Portal'),
+												_0: _mdgriffith$style_elements$Element$text(', and '),
 												_1: {
 													ctor: '::',
-													_0: _mdgriffith$style_elements$Element$text('. I also play guitar and occasionally write music.'),
-													_1: {ctor: '[]'}
+													_0: _user$project$View_AboutPage$constant('Portal'),
+													_1: {
+														ctor: '::',
+														_0: _mdgriffith$style_elements$Element$text('. I also play guitar and occasionally write music.'),
+														_1: {ctor: '[]'}
+													}
 												}
 											}
 										}
 									}
 								}
-							}
-						}),
-					_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
 				}
 			}
-		}
-	});
+		});
+};
 
 var _user$project$View_ContactPage$contactPage = A3(
 	_mdgriffith$style_elements$Element$column,
-	_user$project$Styles$Menu,
+	_user$project$Styles$None,
 	{
 		ctor: '::',
 		_0: _mdgriffith$style_elements$Element_Attributes$center,
@@ -20887,7 +20901,7 @@ var _user$project$View_ContactPage$contactPage = A3(
 
 var _user$project$View_HomePage$homePage = A3(
 	_mdgriffith$style_elements$Element$column,
-	_user$project$Styles$Menu,
+	_user$project$Styles$None,
 	{
 		ctor: '::',
 		_0: _mdgriffith$style_elements$Element_Attributes$center,
@@ -20931,7 +20945,7 @@ var _user$project$View_HomePage$homePage = A3(
 var _user$project$View_PortfolioPage$portfolioItem = function (options) {
 	return A3(
 		_mdgriffith$style_elements$Element$column,
-		_user$project$Styles$PortfolioItem,
+		_user$project$Styles$None,
 		{
 			ctor: '::',
 			_0: _mdgriffith$style_elements$Element_Attributes$center,
@@ -20949,18 +20963,30 @@ var _user$project$View_PortfolioPage$portfolioItem = function (options) {
 					_mdgriffith$style_elements$Element$text(options.title))),
 			_1: {
 				ctor: '::',
-				_0: _mdgriffith$style_elements$Element$text(options.description),
+				_0: A3(
+					_mdgriffith$style_elements$Element$paragraph,
+					_user$project$Styles$PortfolioItemDesc,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _mdgriffith$style_elements$Element$text(options.description),
+						_1: {ctor: '[]'}
+					}),
 				_1: {ctor: '[]'}
 			}
 		});
 };
 var _user$project$View_PortfolioPage$portfolioPage = A3(
 	_mdgriffith$style_elements$Element$column,
-	_user$project$Styles$Menu,
+	_user$project$Styles$None,
 	{
 		ctor: '::',
 		_0: _mdgriffith$style_elements$Element_Attributes$center,
-		_1: {ctor: '[]'}
+		_1: {
+			ctor: '::',
+			_0: _mdgriffith$style_elements$Element_Attributes$spacing(6),
+			_1: {ctor: '[]'}
+		}
 	},
 	{
 		ctor: '::',
@@ -20986,7 +21012,7 @@ var _user$project$View_PortfolioPage$PortfolioItemOptions = F3(
 var _user$project$View$withBackButton = function (page) {
 	return A3(
 		_mdgriffith$style_elements$Element$column,
-		_user$project$Styles$CurrentPage,
+		_user$project$Styles$None,
 		{
 			ctor: '::',
 			_0: _mdgriffith$style_elements$Element_Attributes$center,
@@ -21019,7 +21045,8 @@ var _user$project$View$currentPage = function (model) {
 		case 'HomeRoute':
 			return _user$project$View_HomePage$homePage;
 		case 'AboutRoute':
-			return _user$project$View$withBackButton(_user$project$View_AboutPage$aboutPage);
+			return _user$project$View$withBackButton(
+				_user$project$View_AboutPage$aboutPage(model));
 		case 'PortfolioRoute':
 			return _user$project$View$withBackButton(_user$project$View_PortfolioPage$portfolioPage);
 		case 'ContactRoute':
@@ -21059,7 +21086,11 @@ var _user$project$View$view = function (model) {
 			{
 				ctor: '::',
 				_0: _mdgriffith$style_elements$Element_Attributes$height(_mdgriffith$style_elements$Element_Attributes$fill),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$style_elements$Element_Attributes$scrollbars,
+					_1: {ctor: '[]'}
+				}
 			},
 			{
 				ctor: '::',
@@ -21068,7 +21099,7 @@ var _user$project$View$view = function (model) {
 					ctor: '::',
 					_0: A3(
 						_mdgriffith$style_elements$Element$el,
-						_user$project$Styles$CurrentPage,
+						_user$project$Styles$None,
 						{
 							ctor: '::',
 							_0: _mdgriffith$style_elements$Element_Attributes$maxWidth(
@@ -21076,7 +21107,11 @@ var _user$project$View$view = function (model) {
 							_1: {
 								ctor: '::',
 								_0: _mdgriffith$style_elements$Element_Attributes$center,
-								_1: {ctor: '[]'}
+								_1: {
+									ctor: '::',
+									_0: A2(_mdgriffith$style_elements$Element_Attributes$paddingXY, 30, 0),
+									_1: {ctor: '[]'}
+								}
 							}
 						},
 						_user$project$View$currentPage(model)),
@@ -21090,7 +21125,7 @@ var _user$project$Main$init = function (location) {
 	return {
 		ctor: '_Tuple2',
 		_0: _user$project$Model$initialModel(route),
-		_1: _elm_lang$core$Platform_Cmd$none
+		_1: A2(_elm_lang$core$Task$perform, _user$project$Msg$WindowResize, _elm_lang$window$Window$size)
 	};
 };
 var _user$project$Main$main = A2(
@@ -21100,7 +21135,9 @@ var _user$project$Main$main = A2(
 		init: _user$project$Main$init,
 		view: _user$project$View$view,
 		update: _user$project$Update$update,
-		subscriptions: _elm_lang$core$Basics$always(_elm_lang$core$Platform_Sub$none)
+		subscriptions: function (_p0) {
+			return _elm_lang$window$Window$resizes(_user$project$Msg$WindowResize);
+		}
 	})();
 
 var Elm = {};

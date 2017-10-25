@@ -8,7 +8,7 @@ import Styles exposing (Styles(..))
 
 homePage : Element Styles variation Msg
 homePage =
-    column Menu
+    column None
         [ center ]
         [ link "#about" (el MenuLink [] (text "about"))
         , link "#portfolio" (el MenuLink [] (text "portfolio"))

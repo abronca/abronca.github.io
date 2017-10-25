@@ -8,7 +8,7 @@ import Styles exposing (Styles(..))
 
 contactPage : Element Styles variation Msg
 contactPage =
-    column Menu
+    column None
         [ center ]
         [ link "mailto:alexander.bronca@gmail.com" (el MenuLink [] (text "email"))
         , link "https://github.com/albronca" (el MenuLink [] (text "github"))
