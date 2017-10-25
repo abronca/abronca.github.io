@@ -20995,7 +20995,7 @@ var _user$project$View_PortfolioPage$portfolioPage = A3(
 		_1: {
 			ctor: '::',
 			_0: _user$project$View_PortfolioPage$portfolioItem(
-				{link: 'https://github.com/albronca/snake', title: 'snake', description: '(using oo principles and a little jquery)'}),
+				{link: 'https://a-b.sh/space-melons', title: 'space melons', description: 'fun with svg and randomness in elm'}),
 			_1: {
 				ctor: '::',
 				_0: _user$project$View_PortfolioPage$portfolioItem(

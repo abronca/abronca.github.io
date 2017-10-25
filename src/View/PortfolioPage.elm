@@ -16,9 +16,9 @@ portfolioPage =
             , description = "(a rails/react/redux slack clone)"
             }
         , portfolioItem
-            { link = "https://github.com/albronca/snake"
-            , title = "snake"
-            , description = "(using oo principles and a little jquery)"
+            { link = "https://a-b.sh/space-melons"
+            , title = "space melons"
+            , description = "fun with svg and randomness in elm"
             }
         , portfolioItem
             { link = "https://github.com/albronca/chessrb"
