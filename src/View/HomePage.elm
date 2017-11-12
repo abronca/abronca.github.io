@@ -13,4 +13,5 @@ homePage =
         [ link "#about" (el MenuLink [] (text "about"))
         , link "#portfolio" (el MenuLink [] (text "portfolio"))
         , link "#contact" (el MenuLink [] (text "contact"))
+        , link "dist/resume.pdf" (el MenuLink [] (text "resume"))
         ]

@@ -11,25 +11,23 @@ portfolioPage =
     column None
         [ center, spacing 6 ]
         [ portfolioItem
-            { link = "https://github.com/albronca/sloth"
-            , title = "sloth"
-            , description = "(a rails/react/redux slack clone)"
+            { title = "sloth"
+            , description = "slack clone in rails/react/redux"
+            , liveLink = "https://sloth.chat"
+            , gitHubLink = "https://github.com/albronca/sloth"
             }
         , portfolioItem
-            { link = "https://a-b.sh/space-melons"
-            , title = "space melons"
-            , description = "fun with svg and randomness in elm"
-            }
-        , portfolioItem
-            { link = "https://github.com/albronca/chessrb"
-            , title = "chess"
-            , description = "(a cli game written in ruby)"
+            { title = "space melons"
+            , description = "svg and randomness in elm"
+            , liveLink = "https://a-b.sh/space-melons"
+            , gitHubLink = "https://github.com/albronca/space-melons"
             }
         ]
 
 
 type alias PortfolioItemOptions =
-    { link : String
+    { liveLink : String
+    , gitHubLink : String
     , title : String
     , description : String
     }
@@ -39,6 +37,12 @@ portfolioItem : PortfolioItemOptions -> Element Styles variation Msg
 portfolioItem options =
     column None
         [ center ]
-        [ link options.link (el MenuLink [] (text options.title))
-        , paragraph PortfolioItemDesc [] [ text options.description ]
+        [ paragraph Constant [] [ text options.title ]
+        , row None
+            []
+            [ link options.liveLink (el MenuLink [] (text "live"))
+            , el None [] (text "|")
+            , link options.gitHubLink (el MenuLink [] (text "github"))
+            ]
+        , paragraph PortfolioItemDesc [ padding 10 ] [ text ("(" ++ options.description ++ ")") ]
         ]

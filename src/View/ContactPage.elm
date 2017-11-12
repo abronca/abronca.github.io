@@ -10,8 +10,7 @@ contactPage : Element Styles variation Msg
 contactPage =
     column None
         [ center ]
-        [ link "mailto:alexander.bronca@gmail.com" (el MenuLink [] (text "email"))
+        [ link "mailto:alexander.bronca@gmail.com" (el MenuLink [] (text "alexander.bronca@gmail.com"))
         , link "https://github.com/albronca" (el MenuLink [] (text "github"))
         , link "https://www.linkedin.com/in/albronca" (el MenuLink [] (text "linkedin"))
-        , link "https://twitter.com/al_br_" (el MenuLink [] (text "twitter"))
         ]

@@ -46,6 +46,7 @@ stylesheet =
             ]
         , style PortfolioItemDesc
             [ Font.center
+            , Font.italic
             ]
         , style SmallText
             [ Font.size 20

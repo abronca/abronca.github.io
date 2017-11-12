@@ -3190,6 +3190,88 @@ var _elm_lang$core$Platform$Task = {ctor: 'Task'};
 var _elm_lang$core$Platform$ProcessId = {ctor: 'ProcessId'};
 var _elm_lang$core$Platform$Router = {ctor: 'Router'};
 
+var _Skinney$murmur3$UTF8$accumulate = F3(
+	function (add, $char, _p0) {
+		var _p1 = _p0;
+		var _p3 = _p1._0;
+		var _p2 = _p1._1;
+		if (_p2.ctor === 'Nothing') {
+			return (_elm_lang$core$Native_Utils.cmp($char, 128) < 0) ? {
+				ctor: '_Tuple2',
+				_0: A2(add, $char, _p3),
+				_1: _elm_lang$core$Maybe$Nothing
+			} : ((_elm_lang$core$Native_Utils.cmp($char, 2048) < 0) ? {
+				ctor: '_Tuple2',
+				_0: A2(
+					add,
+					128 | (63 & $char),
+					A2(add, 192 | ($char >>> 6), _p3)),
+				_1: _elm_lang$core$Maybe$Nothing
+			} : (((_elm_lang$core$Native_Utils.cmp($char, 55296) < 0) || (_elm_lang$core$Native_Utils.cmp($char, 57344) > -1)) ? {
+				ctor: '_Tuple2',
+				_0: A2(
+					add,
+					128 | (63 & $char),
+					A2(
+						add,
+						128 | (63 & ($char >>> 6)),
+						A2(add, 224 | ($char >>> 12), _p3))),
+				_1: _elm_lang$core$Maybe$Nothing
+			} : {
+				ctor: '_Tuple2',
+				_0: _p3,
+				_1: _elm_lang$core$Maybe$Just($char)
+			}));
+		} else {
+			var combined = A2(
+				F2(
+					function (x, y) {
+						return x + y;
+					}),
+				65536,
+				(1023 & $char) | ((1023 & _p2._0) << 10));
+			return {
+				ctor: '_Tuple2',
+				_0: A2(
+					add,
+					128 | (63 & combined),
+					A2(
+						add,
+						128 | (63 & (combined >>> 6)),
+						A2(
+							add,
+							128 | (63 & (combined >>> 12)),
+							A2(add, 240 | (combined >>> 18), _p3)))),
+				_1: _elm_lang$core$Maybe$Nothing
+			};
+		}
+	});
+var _Skinney$murmur3$UTF8$foldl = F3(
+	function (op, acc, input) {
+		return _elm_lang$core$Tuple$first(
+			A3(
+				_elm_lang$core$String$foldl,
+				function (_p4) {
+					return A2(
+						_Skinney$murmur3$UTF8$accumulate,
+						op,
+						_elm_lang$core$Char$toCode(_p4));
+				},
+				{ctor: '_Tuple2', _0: acc, _1: _elm_lang$core$Maybe$Nothing},
+				input));
+	});
+var _Skinney$murmur3$UTF8$length = function (input) {
+	return A3(
+		_Skinney$murmur3$UTF8$foldl,
+		_elm_lang$core$Basics$always(
+			F2(
+				function (x, y) {
+					return x + y;
+				})(1)),
+		0,
+		input);
+};
+
 var _Skinney$murmur3$Murmur3$mur = F2(
 	function (c, h) {
 		return 4294967295 & (((h & 65535) * c) + ((65535 & ((h >>> 16) * c)) << 16));
@@ -3219,7 +3301,7 @@ var _Skinney$murmur3$Murmur3$hashFold = F2(
 		var _p5 = _p4;
 		var _p7 = _p5._0;
 		var _p6 = _p5._1;
-		var res = _p5._2 | ((255 & _elm_lang$core$Char$toCode(c)) << _p7);
+		var res = _p5._2 | (c << _p7);
 		if (_elm_lang$core$Native_Utils.cmp(_p7, 24) > -1) {
 			var newHash = _Skinney$murmur3$Murmur3$step(
 				A2(_Skinney$murmur3$Murmur3$mix, _p6, res));
@@ -3232,9 +3314,9 @@ var _Skinney$murmur3$Murmur3$hashString = F2(
 	function (seed, str) {
 		return A2(
 			_Skinney$murmur3$Murmur3$finalize,
-			_elm_lang$core$String$length(str),
+			_Skinney$murmur3$UTF8$length(str),
 			A3(
-				_elm_lang$core$String$foldl,
+				_Skinney$murmur3$UTF8$foldl,
 				_Skinney$murmur3$Murmur3$hashFold,
 				{ctor: '_Tuple3', _0: 0, _1: seed, _2: 0},
 				str));
@@ -20662,7 +20744,11 @@ var _user$project$Styles$stylesheet = _mdgriffith$style_elements$Style$styleShee
 									{
 										ctor: '::',
 										_0: _mdgriffith$style_elements$Style_Font$center,
-										_1: {ctor: '[]'}
+										_1: {
+											ctor: '::',
+											_0: _mdgriffith$style_elements$Style_Font$italic,
+											_1: {ctor: '[]'}
+										}
 									}),
 								_1: {
 									ctor: '::',
@@ -20862,7 +20948,7 @@ var _user$project$View_ContactPage$contactPage = A3(
 				_mdgriffith$style_elements$Element$el,
 				_user$project$Styles$MenuLink,
 				{ctor: '[]'},
-				_mdgriffith$style_elements$Element$text('email'))),
+				_mdgriffith$style_elements$Element$text('alexander.bronca@gmail.com'))),
 		_1: {
 			ctor: '::',
 			_0: A2(
@@ -20883,18 +20969,7 @@ var _user$project$View_ContactPage$contactPage = A3(
 						_user$project$Styles$MenuLink,
 						{ctor: '[]'},
 						_mdgriffith$style_elements$Element$text('linkedin'))),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_mdgriffith$style_elements$Element$link,
-						'https://twitter.com/al_br_',
-						A3(
-							_mdgriffith$style_elements$Element$el,
-							_user$project$Styles$MenuLink,
-							{ctor: '[]'},
-							_mdgriffith$style_elements$Element$text('twitter'))),
-					_1: {ctor: '[]'}
-				}
+				_1: {ctor: '[]'}
 			}
 		}
 	});
@@ -20937,7 +21012,18 @@ var _user$project$View_HomePage$homePage = A3(
 						_user$project$Styles$MenuLink,
 						{ctor: '[]'},
 						_mdgriffith$style_elements$Element$text('contact'))),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_mdgriffith$style_elements$Element$link,
+						'dist/resume.pdf',
+						A3(
+							_mdgriffith$style_elements$Element$el,
+							_user$project$Styles$MenuLink,
+							{ctor: '[]'},
+							_mdgriffith$style_elements$Element$text('resume'))),
+					_1: {ctor: '[]'}
+				}
 			}
 		}
 	});
@@ -20953,26 +21039,73 @@ var _user$project$View_PortfolioPage$portfolioItem = function (options) {
 		},
 		{
 			ctor: '::',
-			_0: A2(
-				_mdgriffith$style_elements$Element$link,
-				options.link,
-				A3(
-					_mdgriffith$style_elements$Element$el,
-					_user$project$Styles$MenuLink,
-					{ctor: '[]'},
-					_mdgriffith$style_elements$Element$text(options.title))),
+			_0: A3(
+				_mdgriffith$style_elements$Element$paragraph,
+				_user$project$Styles$Constant,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _mdgriffith$style_elements$Element$text(options.title),
+					_1: {ctor: '[]'}
+				}),
 			_1: {
 				ctor: '::',
 				_0: A3(
-					_mdgriffith$style_elements$Element$paragraph,
-					_user$project$Styles$PortfolioItemDesc,
+					_mdgriffith$style_elements$Element$row,
+					_user$project$Styles$None,
 					{ctor: '[]'},
 					{
 						ctor: '::',
-						_0: _mdgriffith$style_elements$Element$text(options.description),
-						_1: {ctor: '[]'}
+						_0: A2(
+							_mdgriffith$style_elements$Element$link,
+							options.liveLink,
+							A3(
+								_mdgriffith$style_elements$Element$el,
+								_user$project$Styles$MenuLink,
+								{ctor: '[]'},
+								_mdgriffith$style_elements$Element$text('live'))),
+						_1: {
+							ctor: '::',
+							_0: A3(
+								_mdgriffith$style_elements$Element$el,
+								_user$project$Styles$None,
+								{ctor: '[]'},
+								_mdgriffith$style_elements$Element$text('|')),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_mdgriffith$style_elements$Element$link,
+									options.gitHubLink,
+									A3(
+										_mdgriffith$style_elements$Element$el,
+										_user$project$Styles$MenuLink,
+										{ctor: '[]'},
+										_mdgriffith$style_elements$Element$text('github'))),
+								_1: {ctor: '[]'}
+							}
+						}
 					}),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: A3(
+						_mdgriffith$style_elements$Element$paragraph,
+						_user$project$Styles$PortfolioItemDesc,
+						{
+							ctor: '::',
+							_0: _mdgriffith$style_elements$Element_Attributes$padding(10),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _mdgriffith$style_elements$Element$text(
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									'(',
+									A2(_elm_lang$core$Basics_ops['++'], options.description, ')'))),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
 			}
 		});
 };
@@ -20991,22 +21124,17 @@ var _user$project$View_PortfolioPage$portfolioPage = A3(
 	{
 		ctor: '::',
 		_0: _user$project$View_PortfolioPage$portfolioItem(
-			{link: 'https://github.com/albronca/sloth', title: 'sloth', description: '(a rails/react/redux slack clone)'}),
+			{title: 'sloth', description: 'slack clone in rails/react/redux', liveLink: 'https://sloth.chat', gitHubLink: 'https://github.com/albronca/sloth'}),
 		_1: {
 			ctor: '::',
 			_0: _user$project$View_PortfolioPage$portfolioItem(
-				{link: 'https://a-b.sh/space-melons', title: 'space melons', description: 'fun with svg and randomness in elm'}),
-			_1: {
-				ctor: '::',
-				_0: _user$project$View_PortfolioPage$portfolioItem(
-					{link: 'https://github.com/albronca/chessrb', title: 'chess', description: '(a cli game written in ruby)'}),
-				_1: {ctor: '[]'}
-			}
+				{title: 'space melons', description: 'svg and randomness in elm', liveLink: 'https://a-b.sh/space-melons', gitHubLink: 'https://github.com/albronca/space-melons'}),
+			_1: {ctor: '[]'}
 		}
 	});
-var _user$project$View_PortfolioPage$PortfolioItemOptions = F3(
-	function (a, b, c) {
-		return {link: a, title: b, description: c};
+var _user$project$View_PortfolioPage$PortfolioItemOptions = F4(
+	function (a, b, c, d) {
+		return {liveLink: a, gitHubLink: b, title: c, description: d};
 	});
 
 var _user$project$View$withBackButton = function (page) {
