@@ -183,7 +183,7 @@ homePage =
         , menuLink [ centerX ] { url = "#portfolio", label = text "portfolio" }
         , menuLink [ centerX ] { url = "#contact", label = text "contact" }
         , menuLink [ centerX ]
-            { url = "https://a-b.sh/dist/resume.pdf"
+            { url = "https://albronca.github.io/dist/resume.pdf"
             , label = text "resume"
             }
         ]
@@ -235,7 +235,7 @@ portfolioPage =
         , portfolioItem
             { title = "space melons"
             , description = "svg and randomness in elm"
-            , liveLink = "https://a-b.sh/space-melons"
+            , liveLink = "https://albronca.github.io/space-melons"
             , gitHubLink = "https://github.com/albronca/space-melons"
             }
         ]
