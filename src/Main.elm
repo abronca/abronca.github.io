@@ -227,10 +227,10 @@ portfolioPage =
     column
         [ centerX, spacing 6 ]
         [ portfolioItem
-            { title = "sloth"
-            , description = "slack clone in rails/react/redux"
-            , liveLink = "https://sloth.chat"
-            , gitHubLink = "https://github.com/albronca/sloth"
+            { title = "lights out"
+            , description = "classic puzzle game"
+            , liveLink = "https://albronca.github.io/lights-out"
+            , gitHubLink = "https://github.com/albronca/lights-out"
             }
         , portfolioItem
             { title = "space melons"
