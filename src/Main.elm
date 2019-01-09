@@ -191,33 +191,31 @@ homePage =
 
 aboutPage : Model -> Element Msg
 aboutPage model =
-    column
-        [ alignLeft, spacing 6 ]
-        [ question [ text "What do you do?" ]
-        , answer
-            [ text "I write code in NYC. I'm proficient in "
+    textColumn
+        [ spacing 20 ]
+        [ paragraph [ Font.justify ]
+            [ text "I'm a software developer based in Brooklyn, NY. "
+            , text "My primary languages are "
+            , highlightedText "Elm"
+            , text ", "
             , highlightedText "JavaScript"
             , text ", "
             , highlightedText "Ruby"
             , text ", and "
             , highlightedText "SQL"
-            , text ". I'm comfortable using "
+            , text ". "
+            , text "I've worked with "
+            , highlightedText "Flow"
+            , text ", "
+            , highlightedText "TypeScript"
+            , text ", "
             , highlightedText "Rails"
             , text ", "
             , highlightedText "React"
             , text ", and "
             , highlightedText "Redux"
-            , text ". I currently teach at App Academy NYC."
-            ]
-        , question [ text "Do you have any hobbies?" ]
-        , answer
-            [ text "Some of my favorite video games are "
-            , highlightedText "EarthBound"
-            , text ", "
-            , highlightedText "Fez"
-            , text ", and "
-            , highlightedText "Portal"
-            , text ". I also play guitar and occasionally write music."
+            , text ". "
+            , text "In my free time I enjoy playing games, singing karaoke, and studying Japanese."
             ]
         ]
 
@@ -227,14 +225,20 @@ portfolioPage =
     column
         [ centerX, spacing 6 ]
         [ portfolioItem
+            { title = "picross"
+            , description = "grid-based puzzle game in elm"
+            , liveLink = "https://albronca.github.io/picross"
+            , gitHubLink = "https://github.com/albronca/picross"
+            }
+        , portfolioItem
             { title = "lights out"
-            , description = "classic puzzle game"
+            , description = "classic puzzle game in elm"
             , liveLink = "https://albronca.github.io/lights-out"
             , gitHubLink = "https://github.com/albronca/lights-out"
             }
         , portfolioItem
             { title = "space melons"
-            , description = "svg and randomness in elm"
+            , description = "svg animation in elm"
             , liveLink = "https://albronca.github.io/space-melons"
             , gitHubLink = "https://github.com/albronca/space-melons"
             }
@@ -313,8 +317,8 @@ answer =
 
 aboutItem : String -> List (Element Msg) -> Element Msg
 aboutItem bullet =
-    (::) (el [ Font.bold, Font.color green, alignLeft ] (text bullet))
-        >> paragraph []
+    paragraph
+        [ text bullet |> el [ Font.bold, Font.color green, paddingXY 5 0 ] |> onLeft ]
 
 
 
