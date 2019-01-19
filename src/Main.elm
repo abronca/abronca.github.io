@@ -6,6 +6,11 @@ import Element exposing (..)
 import Element.Background as Background
 import Element.Border as Border
 import Element.Font as Font
+import FontAwesome.Attributes as Icon
+import FontAwesome.Brands as Icon
+import FontAwesome.Solid as Icon
+import FontAwesome.Styles as Icon
+import Html
 import Task
 import Url
 import Url.Parser exposing ((</>), Parser, fragment, map, oneOf, parse, s, top)
@@ -38,18 +43,16 @@ type alias Model =
 
 
 type Route
-    = HomeRoute
-    | AboutRoute
+    = AboutRoute
     | PortfolioRoute
     | ContactRoute
-    | NotFoundRoute
 
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init flags url key =
     let
         route =
-            parseUrl url
+            parseUrl url |> Maybe.withDefault AboutRoute
     in
     ( Model key route, Cmd.none )
 
@@ -75,32 +78,30 @@ update msg model =
                     ( model, Nav.load href )
 
         UrlChanged url ->
-            ( { model | route = parseUrl url }
-            , Cmd.none
-            )
+            case parseUrl url of
+                Just route ->
+                    ( { model | route = route }, Cmd.none )
+
+                Nothing ->
+                    ( model, Cmd.none )
 
 
-parseUrl : Url.Url -> Route
+parseUrl : Url.Url -> Maybe Route
 parseUrl url =
     let
         hashUrl =
             { url | path = url.fragment |> Maybe.withDefault "" }
     in
-    case parse routeParser hashUrl of
-        Just route ->
-            route
-
-        Nothing ->
-            NotFoundRoute
+    parse routeParser hashUrl
 
 
 routeParser : Parser (Route -> a) a
 routeParser =
     oneOf
-        [ map HomeRoute top
-        , map AboutRoute (s "about")
-        , map PortfolioRoute (s "portfolio")
-        , map ContactRoute (s "contact")
+        [ map AboutRoute top
+        , map AboutRoute <| s "about"
+        , map PortfolioRoute <| s "portfolio"
+        , map ContactRoute <| s "contact"
         ]
 
 
@@ -121,7 +122,8 @@ view : Model -> Browser.Document Msg
 view model =
     { title = "a-b.sh"
     , body =
-        [ layout
+        [ Html.node "style" [] [ Icon.css ]
+        , layout
             [ Font.family
                 [ Font.typeface "Inconsolata"
                 , Font.sansSerif
@@ -137,63 +139,73 @@ view model =
 
 pageWrapper : Model -> Element Msg
 pageWrapper model =
-    column
-        [ centerX, width (fill |> maximum 600), paddingXY 30 0 ]
-        [ header, currentPage model ]
+    row
+        [ centerX, width <| maximum 700 <| fill, height fill ]
+        [ el [ width <| fillPortion 1 ] none
+        , column [ height fill, width <| fillPortion 6 ]
+            [ header
+            , el [ onLeft <| nav model, paddingXY 30 0 ] <| currentPage model
+            ]
+        ]
 
 
 header : Element Msg
 header =
-    column
-        [ Font.size 34
+    el
+        [ Font.size 40
         , Font.bold
         , Font.color green
-        , paddingXY 0 30
-        , centerX
+        , padding 30
+        , alignLeft
         ]
-        [ el [ centerX ] (text "🐊")
-        , el [ centerX ] (text "alexander bronca")
-        ]
+    <|
+        text "alexander bronca"
 
 
 currentPage : Model -> Element Msg
 currentPage model =
     case model.route of
-        HomeRoute ->
-            homePage
-
         AboutRoute ->
-            aboutPage model |> withBackButton
+            aboutPage
 
         PortfolioRoute ->
-            portfolioPage |> withBackButton
+            portfolioPage
 
         ContactRoute ->
-            contactPage |> withBackButton
-
-        NotFoundRoute ->
-            text "route not found"
+            contactPage
 
 
-homePage : Element Msg
-homePage =
+nav : Model -> Element Msg
+nav model =
     column
-        [ centerX ]
-        [ menuLink [ centerX ] { url = "#about", label = text "about" }
-        , menuLink [ centerX ] { url = "#portfolio", label = text "portfolio" }
-        , menuLink [ centerX ] { url = "#contact", label = text "contact" }
-        , menuLink [ centerX ]
-            { url = "https://albronca.github.io/dist/resume.pdf"
+        [ alignTop, alignLeft, spacing 16 ]
+        [ menuLink ([ alignRight ] ++ currentPageLink model.route AboutRoute)
+            { url = "#about", label = text "about" }
+        , menuLink ([ alignRight ] ++ currentPageLink model.route PortfolioRoute)
+            { url = "#portfolio", label = text "portfolio" }
+        , menuLink ([ alignRight ] ++ currentPageLink model.route ContactRoute)
+            { url = "#contact", label = text "contact" }
+        , menuLink [ alignRight ]
+            { url = "https://albronca.github.io/dist/alexander_bronca_resume_jan_2018.pdf"
             , label = text "resume"
             }
         ]
 
 
-aboutPage : Model -> Element Msg
-aboutPage model =
+currentPageLink : Route -> Route -> List (Attribute Msg)
+currentPageLink currentRoute linkRoute =
+    if currentRoute == linkRoute then
+        [ Font.bold ]
+
+    else
+        []
+
+
+aboutPage : Element Msg
+aboutPage =
     textColumn
         [ spacing 20 ]
-        [ paragraph [ Font.justify ]
+        [ paragraph [ Font.alignLeft ]
             [ text "I'm a software developer based in Brooklyn, NY. "
             , text "My primary languages are "
             , highlightedText "Elm"
@@ -223,8 +235,14 @@ aboutPage model =
 portfolioPage : Element Msg
 portfolioPage =
     column
-        [ centerX, spacing 6 ]
+        [ centerX, spacing 15 ]
         [ portfolioItem
+            { title = "gagopa.club"
+            , description = "responsive frontend for karaoke song search"
+            , liveLink = "https://gagopa.club"
+            , gitHubLink = "https://github.com/albronca/gagopa"
+            }
+        , portfolioItem
             { title = "picross"
             , description = "grid-based puzzle game in elm"
             , liveLink = "https://albronca.github.io/picross"
@@ -255,33 +273,46 @@ type alias PortfolioItemOptions =
 
 portfolioItem : PortfolioItemOptions -> Element Msg
 portfolioItem options =
-    column
-        [ centerX ]
-        [ paragraph [ Font.center ] [ highlightedText options.title ]
-        , row [ centerX ]
-            [ menuLink [] { url = options.liveLink, label = text "live" }
+    column [ spacing 5 ]
+        [ row [ spacing 5 ]
+            [ highlightedText options.title
+            , text " ("
+            , menuLink [] { url = options.liveLink, label = text "live" }
             , text "|"
             , menuLink [] { url = options.gitHubLink, label = text "github" }
+            , text ")"
             ]
-        , paragraph [ padding 10, Font.center, Font.italic ] [ text ("(" ++ options.description ++ ")") ]
+        , el [ Font.italic, Font.size 20, paddingXY 10 0 ] <| text options.description
         ]
 
 
 contactPage : Element Msg
 contactPage =
     column
-        [ centerX ]
-        [ menuLink [ centerX ]
+        [ spacing 20 ]
+        [ menuLink []
             { url = "mailto:alexander.bronca@gmail.com"
-            , label = text "alexander.bronca@gmail.com"
+            , label =
+                row [ spacing 10 ]
+                    [ el [] <| html <| Icon.envelopeSquare []
+                    , text "alexander.bronca@gmail.com"
+                    ]
             }
-        , menuLink [ centerX ]
+        , menuLink []
             { url = "https://github.com/albronca"
-            , label = text "github"
+            , label =
+                row [ spacing 10 ]
+                    [ el [] <| html <| Icon.github []
+                    , text "github"
+                    ]
             }
-        , menuLink [ centerX ]
+        , menuLink []
             { url = "https://www.linkedin.com/in/albronca"
-            , label = text "linkedin"
+            , label =
+                row [ spacing 10 ]
+                    [ el [] <| html <| Icon.linkedin []
+                    , text "linkedin"
+                    ]
             }
         ]
 
@@ -294,31 +325,6 @@ menuLink attributes =
 highlightedText : String -> Element Msg
 highlightedText =
     text >> el [ Font.color yellow ]
-
-
-withBackButton : Element Msg -> Element Msg
-withBackButton page =
-    column
-        [ centerX ]
-        [ page
-        , menuLink [ centerX, padding 30 ] { url = "/", label = text "←" }
-        ]
-
-
-question : List (Element Msg) -> Element Msg
-question =
-    aboutItem "Q:"
-
-
-answer : List (Element Msg) -> Element Msg
-answer =
-    aboutItem "A:"
-
-
-aboutItem : String -> List (Element Msg) -> Element Msg
-aboutItem bullet =
-    paragraph
-        [ text bullet |> el [ Font.bold, Font.color green, paddingXY 5 0 ] |> onLeft ]
 
 
 
