@@ -7,6 +7,7 @@ import Element.Background as Background
 import Element.Font as Font
 import FontAwesome exposing (envelope, gitHub, icon, linkedIn)
 import Html
+import Palette
 import Url
 import Url.Parser exposing (Parser, map, oneOf, parse, s, top)
 
@@ -121,8 +122,8 @@ view model =
                 , Font.sansSerif
                 ]
             , Font.size (scaled 2)
-            , Font.color lightGray
-            , Background.color darkGray
+            , Font.color Palette.white
+            , Background.color Palette.black
             ]
             (mainLayout model)
         ]
@@ -142,8 +143,7 @@ header : Element Msg
 header =
     el
         [ Font.size (scaled 4)
-        , Font.bold
-        , Font.color green
+        , Font.color Palette.green
         , centerX
         ]
     <|
@@ -162,7 +162,7 @@ currentPage model =
 
 nav : Model -> Element Msg
 nav model =
-    row [ paddingXY 0 32, Font.color blue, Font.size (scaled 1), width fill, spaceEvenly ]
+    row [ paddingXY 0 32, Font.color Palette.blue, Font.size (scaled 1), width fill, spaceEvenly ]
         [ navItem
             { selected = model.route == AboutRoute
             , url = "#about"
@@ -204,7 +204,7 @@ navItem { selected, url, label } =
 aboutPage : Element Msg
 aboutPage =
     column [ spacing 32 ]
-        [ paragraph [ Font.justify, spacing 8 ]
+        [ paragraph [ spacing 8 ]
             [ text "I'm a software developer based in Brooklyn, NY. "
             , text "My primary languages are "
             , highlightedText "Elm"
@@ -228,7 +228,7 @@ aboutPage =
             , text ". "
             , text "In my free time I enjoy playing games, singing karaoke, and studying Japanese."
             ]
-        , column [ Font.color blue, spacing 16 ]
+        , column [ Font.color Palette.blue, spacing 16 ]
             [ contactItem
                 { icon = icon envelope
                 , url = "mailto:alexander.bronca@gmail.com"
@@ -308,9 +308,9 @@ project options =
         [ highlightedText options.title
         , row [ Font.size (scaled 1) ]
             [ text "("
-            , link [ Font.color blue ] { url = options.liveLink, label = text "live" }
+            , link [ Font.color Palette.blue ] { url = options.liveLink, label = text "live" }
             , text "|"
-            , link [ Font.color blue ] { url = options.gitHubLink, label = text "github" }
+            , link [ Font.color Palette.blue ] { url = options.gitHubLink, label = text "github" }
             , text ")"
             ]
         , paragraph [ Font.italic ] [ text options.description ]
@@ -319,38 +319,9 @@ project options =
 
 highlightedText : String -> Element Msg
 highlightedText =
-    text >> el [ Font.color yellow ]
+    text >> el [ Font.color Palette.yellow ]
 
 
 scaled : Int -> Int
 scaled =
     modular 16 1.25 >> floor
-
-
-
--- COLORS
-
-
-blue : Color
-blue =
-    rgb255 129 162 178
-
-
-darkGray : Color
-darkGray =
-    rgb255 38 38 38
-
-
-green : Color
-green =
-    rgb255 181 189 104
-
-
-lightGray : Color
-lightGray =
-    rgb255 188 188 188
-
-
-yellow : Color
-yellow =
-    rgb255 240 198 116
