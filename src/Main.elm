@@ -175,7 +175,8 @@ nav model =
             }
         , navItem
             { selected = False
-            , url = "https://albronca.github.io/dist/alexander_bronca_resume_jan_2018.pdf"
+            , url =
+                "https://albronca.github.io/dist/alexander_bronca_resume_feb_2021.pdf"
             , label = text "resume"
             }
         ]
@@ -205,26 +206,26 @@ aboutPage : Element Msg
 aboutPage =
     column [ spacing 32 ]
         [ paragraph [ spacing 8 ]
-            [ text "I'm a software developer based in Brooklyn, NY. "
+            [ text "I'm a software developer based in Jersey City, NJ. "
             , text "My primary languages are "
             , highlightedText "Elm"
             , text ", "
             , highlightedText "JavaScript"
+            , text ", "
+            , highlightedText "TypeScript"
             , text ", "
             , highlightedText "Ruby"
             , text ", and "
             , highlightedText "SQL"
             , text ". "
             , text "I've worked with "
-            , highlightedText "Flow"
-            , text ", "
-            , highlightedText "TypeScript"
-            , text ", "
             , highlightedText "Rails"
             , text ", "
             , highlightedText "React"
-            , text ", and "
+            , text ", "
             , highlightedText "Redux"
+            , text ", and "
+            , highlightedText "Angular"
             , text ". "
             , text "In my free time I enjoy playing games, singing karaoke, and studying Japanese."
             ]
